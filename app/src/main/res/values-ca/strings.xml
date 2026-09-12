@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Danny\'s Alarm</string>
+    <string name="add_alarm">Afegir Alarma</string>
+    <string name="edit_alarm">Editar Alarma</string>
+    <string name="delete">Eliminar</string>
+    <string name="save">Desar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="label">Nom / Etiqueta</string>
+    <string name="label_placeholder">Desperta\'m</string>
+    <string name="vibrate">Vibrar en sonar</string>
+    <string name="melody">Melodia</string>
+    <string name="select_melody">Seleccionar so o cançó</string>
+    <string name="days_of_week">Dies de repetició</string>
+    <string name="exceptions_calendar">Excepcions (No sonar aquests dies)</string>
+    <string name="language_menu">Idioma</string>
+    <string name="no_alarms">No hi ha alarmes programades. Afegeix-ne una ara!</string>
+    <string name="dismiss_alarm">Apagar</string>
+    <string name="snooze_alarm">Posposar (5 min)</string>
+    <string name="audio_explorer_title">Explorador de Sons</string>
+    <string name="system_sounds">Sons del Sistema</string>
+    <string name="local_files">Arxius Locals / Música</string>
+    <string name="permission_required">Permisos requerits</string>
+
+    <string name="mon">Dl</string>
+    <string name="tue">Dt</string>
+    <string name="wed">Dc</string>
+    <string name="thu">Dj</string>
+    <string name="fri">Dv</string>
+    <string name="sat">Ds</string>
+    <string name="sun">Dg</string>
+    <string name="settings">Configuració</string>
+    <string name="dark_mode">Mode Fosc</string>
+    <string name="background_color">Color de Fons</string>
+    <string name="manual">Manual d\'Usuari</string>
+    <string name="manual_content">Benvingut a Danny\'s Alarm!\n\nFUNCIONS:\n1. AFEGIR ALARMA: Utilitza el botó (+). Pots configurar l\'hora escrivint directament sobre els números.\n2. REPETICIÓ: Selecciona els dies de la setmana en què vols que soni l\'alarma.\n3. EXCEPCIONS: Clica a \"Excepcions\" per obrir un calendari i seleccionar dies específics en què l\'alarma NO ha de sonar, encara que sigui un dia programat.\n4. MELODIA: Tria qualsevol so del sistema o arxiu de música local del teu dispositiu.\n5. CONFIGURACIÓ: Personalitza l\'app amb qualsevol color de fons o força el Mode Fosc.\n6. IDIOMES: Canvia l\'idioma de l\'app a l\'instant des de la icona del globus terraqüi.\n\nGaudeix d\'una experiència de despertador professional!</string>
+    <string name="donation_msg">Si t\'ha agradat la meva aplicació pots ajudar-me en futures creacions donant el que consideris oportú a paypal.me/DanielSalasSagara - Gràcies!</string>
+</resources>

@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Danny\'s Alarm</string>
+    <string name="add_alarm">Ajouter une alarme</string>
+    <string name="edit_alarm">Modifier l\'alarme</string>
+    <string name="delete">Supprimer</string>
+    <string name="save">Enregistrer</string>
+    <string name="cancel">Annuler</string>
+    <string name="label">Nom / Étiquette</string>
+    <string name="label_placeholder">Réveille-moi</string>
+    <string name="vibrate">Vibrer lors de la sonnerie</string>
+    <string name="melody">Mélodie</string>
+    <string name="select_melody">Sélectionner un son ou une chanson</string>
+    <string name="days_of_week">Jours de répétition</string>
+    <string name="exceptions_calendar">Exceptions (Ne pas sonner ces jours-là)</string>
+    <string name="language_menu">Langue</string>
+    <string name="no_alarms">Aucune alarme programmée. Ajoutez-en une maintenant !</string>
+    <string name="dismiss_alarm">Arrêter</string>
+    <string name="snooze_alarm">Répéter (5 min)</string>
+    <string name="audio_explorer_title">Explorateur de Sons</string>
+    <string name="system_sounds">Sons du Système</string>
+    <string name="local_files">Fichiers Locaux / Musique</string>
+    <string name="permission_required">Permissions requises</string>
+
+    <string name="mon">Lu</string>
+    <string name="tue">Ma</string>
+    <string name="wed">Me</string>
+    <string name="thu">Je</string>
+    <string name="fri">Ve</string>
+    <string name="sat">Sa</string>
+    <string name="sun">Di</string>
+    <string name="settings">Paramètres</string>
+    <string name="dark_mode">Mode sombre</string>
+    <string name="background_color">Couleur d\'arrière-plan</string>
+    <string name="manual">Manuel d\'Utilisation</string>
+    <string name="manual_content">Bienvenue sur Danny\'s Alarm !\n\nFONCTIONNALITÉS :\n1. AJOUTER UNE ALARME : Utilisez le bouton (+). Vous pouvez régler l\'heure en tapant directement sur les chiffres.\n2. RÉPÉTITION : Sélectionnez les jours de la semaine où vous souhaitez que l\'alarme sonne.\n3. EXCEPTIONS : Cliquez sur \"Exceptions\" pour ouvrir un calendrier et sélectionner des jours spécifiques où l\'alarme ne doit PAS sonner.\n4. MÉLODIE : Choisissez n\'importe quel son du système ou fichier musical local.\n5. PARAMÈTRES : Personnalisez l\'application avec n\'importe quelle couleur d\'arrière-plan ou forcez le mode sombre.\n6. LANGUES : Changez instantanément la langue de l\'application depuis l\'icône du globe.\n\nProfitez d\'un réveil professionnel !</string>
+    <string name="donation_msg">Si vous avez aimé mon application, vous pouvez m\'aider pour mes futures créations en faisant un don de ce que vous jugerez approprié sur paypal.me/DanielSalasSagara - Merci !</string>
+</resources>

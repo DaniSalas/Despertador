@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Danny\'s Alarm</string>
+    <string name="add_alarm">Aggiungi sveglia</string>
+    <string name="edit_alarm">Modifica sveglia</string>
+    <string name="delete">Elimina</string>
+    <string name="save">Salva</string>
+    <string name="cancel">Annulla</string>
+    <string name="label">Nome / Etichetta</string>
+    <string name="label_placeholder">Svegliami</string>
+    <string name="vibrate">Vibra al suono</string>
+    <string name="melody">Melodia</string>
+    <string name="select_melody">Seleziona suono o canzone</string>
+    <string name="days_of_week">Giorni di ripetizione</string>
+    <string name="exceptions_calendar">Eccezioni (Non suonare in questi giorni)</string>
+    <string name="language_menu">Lingua</string>
+    <string name="no_alarms">Nessuna sveglia programmata. Aggiungine una ora!</string>
+    <string name="dismiss_alarm">Spegni</string>
+    <string name="snooze_alarm">Posponi (5 min)</string>
+    <string name="audio_explorer_title">Esploratore di Suoni</string>
+    <string name="system_sounds">Suoni di Sistema</string>
+    <string name="local_files">File Locali / Musica</string>
+    <string name="permission_required">Permessi richiesti</string>
+
+    <string name="mon">Lun</string>
+    <string name="tue">Mar</string>
+    <string name="wed">Mer</string>
+    <string name="thu">Gio</string>
+    <string name="fri">Ven</string>
+    <string name="sat">Sab</string>
+    <string name="sun">Dom</string>
+    <string name="settings">Impostazioni</string>
+    <string name="dark_mode">Modalità scura</string>
+    <string name="background_color">Colore di Sfondo</string>
+    <string name="manual">Manuale Utente</string>
+    <string name="manual_content">Benvenuti in Danny\'s Alarm!\n\nCARATTERISTICHE:\n1. AGGIUNGI SVEGLIA: Usa il pulsante (+). Puoi impostare l\'ora digitando directamente sui numeri.\n2. RIPETIZIONE: Seleziona i giorni della settimana in cui desideri che la sveglia suoni.\n3. ECCEZIONI: Clicca su \"Eccezioni\" per aprire un calendario e selezionare giorni specifici in cui la sveglia NON deve suonare.\n4. MELODIA: Scegli qualsiasi suono di sistema o file musicale locale dal tuo dispositivo.\n5. IMPOSTAZIONI: Personalizza l\'app con qualsiasi colore di sfondo o forza la modalità scura.\n6. LINGUE: Cambia istantaneamente la lingua dell\'app dall\'icona del globo.\n\nGoditi un risveglio professionale!</string>
+    <string name="donation_msg">Se ti è piaciuta la mia applicazione, puoi aiutarmi con le future creazioni donando ciò que ritieni opportuno su paypal.me/DanielSalasSagara - Grazie!</string>
+</resources>

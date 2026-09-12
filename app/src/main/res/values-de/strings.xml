@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Danny\'s Alarm</string>
+    <string name="add_alarm">Alarm hinzufügen</string>
+    <string name="edit_alarm">Alarm bearbeiten</string>
+    <string name="delete">Löschen</string>
+    <string name="save">Speichern</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="label">Name / Bezeichnung</string>
+    <string name="label_placeholder">Weck mich auf</string>
+    <string name="vibrate">Beim Klingeln vibrieren</string>
+    <string name="melody">Melodie</string>
+    <string name="select_melody">Ton oder Lied auswählen</string>
+    <string name="days_of_week">Wiederholungstage</string>
+    <string name="exceptions_calendar">Ausnahmen (An diesen Tagen nicht klingeln)</string>
+    <string name="language_menu">Sprache</string>
+    <string name="no_alarms">Keine Alarme geplant. Jetzt einen hinzufügen!</string>
+    <string name="dismiss_alarm">Ausschalten</string>
+    <string name="snooze_alarm">Schlummern (5 Min)</string>
+    <string name="audio_explorer_title">Sound-Explorer</string>
+    <string name="system_sounds">Systemtöne</string>
+    <string name="local_files">Lokale Dateien / Musik</string>
+    <string name="permission_required">Berechtigungen erforderlich</string>
+
+    <string name="mon">Mo</string>
+    <string name="tue">Di</string>
+    <string name="wed">Mi</string>
+    <string name="thu">Do</string>
+    <string name="fri">Fr</string>
+    <string name="sat">Sa</string>
+    <string name="sun">So</string>
+    <string name="settings">Einstellungen</string>
+    <string name="dark_mode">Dunkelmodus</string>
+    <string name="background_color">Hintergrundfarbe</string>
+    <string name="manual">Bedienungsanleitung</string>
+    <string name="manual_content">Willkommen bei Danny\'s Alarm!\n\nFUNKTIONEN:\n1. ALARM HINZUFÜGEN: Nutzen Sie die (+)-Taste. Die Uhrzeit kann durch direktes Tippen auf die Zahlen eingestellt werden.\n2. WIEDERHOLUNG: Wählen Sie die Wochentage aus, an denen der Wecker klingeln soll.\n3. AUSNAHMEN: Klicken Sie auf „Ausnahmen“, um einen Kalender zu öffnen und Tage auszuwählen, an denen der Wecker NICHT klingeln soll.\n4. MELODIE: Wählen Sie einen beliebigen Systemton oder eine lokale Musikdatei aus.\n5. EINSTELLUNGEN: Passen Sie die App mit einer beliebigen Hintergrundfarbe an oder erzwingen Sie den Dunkelmodus.\n6. SPRACHEN: Ändern Sie die App-Sprache sofort über das Globus-Symbol.\n\nGenießen Sie ein professionelles Weckerlebnis!</string>
+    <string name="donation_msg">Wenn Ihnen meine Anwendung gefallen hat, können Sie mir bei zukünftigen Kreationen helfen, indem Sie spenden, was Sie für angemessen halten, unter paypal.me/DanielSalasSagara - Danke!</string>
+</resources>

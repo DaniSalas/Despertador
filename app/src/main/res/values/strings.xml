@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Danny\'s Alarm</string>
+    <string name="add_alarm">Add Alarm</string>
+    <string name="edit_alarm">Edit Alarm</string>
+    <string name="delete">Delete</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="label">Name / Label</string>
+    <string name="label_placeholder">Wake me up</string>
+    <string name="vibrate">Vibrate on ring</string>
+    <string name="melody">Melody</string>
+    <string name="select_melody">Select sound or song</string>
+    <string name="days_of_week">Repeat days</string>
+    <string name="exceptions_calendar">Exceptions (Do not ring these days)</string>
+    <string name="language_menu">Language</string>
+    <string name="no_alarms">No alarms scheduled. Add one now!</string>
+    <string name="dismiss_alarm">Dismiss</string>
+    <string name="snooze_alarm">Snooze (5 min)</string>
+    <string name="audio_explorer_title">Sound Explorer</string>
+    <string name="system_sounds">System Sounds</string>
+    <string name="local_files">Local Files / Music</string>
+    <string name="permission_required">Permissions required</string>
+
+    <string name="mon">Mo</string>
+    <string name="tue">Tu</string>
+    <string name="wed">We</string>
+    <string name="thu">Th</string>
+    <string name="fri">Fr</string>
+    <string name="sat">Sa</string>
+    <string name="sun">Su</string>
+    <string name="settings">Settings</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="background_color">Background Color</string>
+    <string name="manual">User Manual</string>
+    <string name="manual_content">Welcome to Danny\'s Alarm!\n\nFEATURES:\n1. ADD ALARM: Use the (+) button. You can set the time by typing directly on the numbers.\n2. REPEAT: Select the days of the week you want the alarm to ring.\n3. EXCEPTIONS: Click \"Exceptions\" to open a calendar and select specific days when the alarm should NOT ring, even if it\'s a scheduled day.\n4. MELODY: Choose any system sound or local music file from your device.\n5. SETTINGS: Customize the app with any background color or force Dark Mode.\n6. LANGUAGES: Change the app language instantly from the globe icon.\n\nEnjoy a professional waking experience!</string>
+    <string name="donation_msg">If you liked my application, you can help me with future creations by donating what you consider appropriate at paypal.me/DanielSalasSagara - Thank you!</string>
+</resources>

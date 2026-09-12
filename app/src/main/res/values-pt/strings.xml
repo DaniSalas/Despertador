@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Danny\'s Alarm</string>
+    <string name="add_alarm">Adicionar Alarme</string>
+    <string name="edit_alarm">Editar Alarme</string>
+    <string name="delete">Excluir</string>
+    <string name="save">Salvar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="label">Nome / Etiqueta</string>
+    <string name="label_placeholder">Acorde-me</string>
+    <string name="vibrate">Vibrar ao tocar</string>
+    <string name="melody">Melodia</string>
+    <string name="select_melody">Selecionar som ou música</string>
+    <string name="days_of_week">Dias de repetição</string>
+    <string name="exceptions_calendar">Exceções (Não tocar nestes dias)</string>
+    <string name="language_menu">Idioma</string>
+    <string name="no_alarms">Nenhum alarme programado. Adicione um agora!</string>
+    <string name="dismiss_alarm">Desligar</string>
+    <string name="snooze_alarm">Adiar (5 min)</string>
+    <string name="audio_explorer_title">Explorador de Sons</string>
+    <string name="system_sounds">Sons do Sistema</string>
+    <string name="local_files">Arquivos Locais / Música</string>
+    <string name="permission_required">Permissões necessárias</string>
+
+    <string name="mon">Seg</string>
+    <string name="tue">Ter</string>
+    <string name="wed">Qua</string>
+    <string name="thu">Qui</string>
+    <string name="fri">Sex</string>
+    <string name="sat">Sáb</string>
+    <string name="sun">Dom</string>
+    <string name="settings">Configurações</string>
+    <string name="dark_mode">Modo Escuro</string>
+    <string name="background_color">Cor de Fundo</string>
+    <string name="manual">Manual do Usuário</string>
+    <string name="manual_content">Bem-vindo ao Danny\'s Alarm!\n\nRECURSOS:\n1. ADICIONAR ALARME: Use o botão (+). Você pode definir o horário digitando diretamente nos números.\n2. REPETIR: Selecione os dias da semana em que deseja que o alarme toque.\n3. EXCEÇÕES: Clique em \"Exceções\" para abrir um calendário e selecionar dias específicos em que o alarme NÃO deve tocar.\n4. MELODIA: Escolha qualquer som do sistema ou arquivo de música local.\n5. CONFIGURAÇÕES: Personalize o aplicativo com qualquer cor de fundo ou force o modo escuro.\n6. IDIOMAS: Altere o idioma do aplicativo instantaneamente a partir do ícone do globo.\n\nDesfrute de uma experiência de despertar profissional!</string>
+</resources>
