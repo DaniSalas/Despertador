@@ -21,6 +21,7 @@ class AlarmService : Service() {
 
     private var mediaPlayer: MediaPlayer? = null
     private var vibrator: Vibrator? = null
+    private var wakeLock: PowerManager.WakeLock? = null
     private val CHANNEL_ID = "alarm_service_channel"
 
     companion object {
@@ -30,9 +31,12 @@ class AlarmService : Service() {
     override fun onCreate() {
         super.onCreate()
         createNotificationChannel()
+        val powerManager = getSystemService(Context.POWER_SERVICE) as PowerManager
+        wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "Despertador:ServiceWakeLock")
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        wakeLock?.acquire(30 * 60 * 1000L /*30 minutes*/)
         if (intent?.action == ACTION_STOP) {
             Log.d("AlarmService", "Recibida acción de detener alarma")
             stopSelf()
@@ -108,6 +112,7 @@ class AlarmService : Service() {
             }
 
             mediaPlayer = MediaPlayer().apply {
+                setWakeMode(this@AlarmService, PowerManager.PARTIAL_WAKE_LOCK)
                 setDataSource(this@AlarmService, uri)
                 setAudioAttributes(
                     AudioAttributes.Builder()
@@ -125,6 +130,7 @@ class AlarmService : Service() {
             try {
                 val fallbackUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
                 mediaPlayer = MediaPlayer().apply {
+                    setWakeMode(this@AlarmService, PowerManager.PARTIAL_WAKE_LOCK)
                     setDataSource(this@AlarmService, fallbackUri)
                     setAudioAttributes(
                         AudioAttributes.Builder()
@@ -179,6 +185,9 @@ class AlarmService : Service() {
         Log.d("AlarmService", "AlarmService destruído, deteniendo sonido y vibración")
         stopAlarmSound()
         stopVibration()
+        if (wakeLock?.isHeld == true) {
+            wakeLock?.release()
+        }
         super.onDestroy()
     }
 

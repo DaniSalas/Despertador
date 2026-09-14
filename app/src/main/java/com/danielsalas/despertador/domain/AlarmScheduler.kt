@@ -44,7 +44,9 @@ class AlarmScheduler(private val context: Context) {
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
-        scheduleAlarm(triggerTimeMs, pendingIntent)
+        // Usar setAlarmClock para la máxima fiabilidad (se muestra el icono en la barra de estado)
+        val alarmClockInfo = AlarmManager.AlarmClockInfo(triggerTimeMs, pendingIntent)
+        alarmManager.setAlarmClock(alarmClockInfo, pendingIntent)
 
         // Programar pre-alarma 10 minutos antes (600,000 ms)
         val preTriggerTimeMs = triggerTimeMs - 600000
