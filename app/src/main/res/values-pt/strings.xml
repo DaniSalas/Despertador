@@ -32,5 +32,9 @@
     <string name="dark_mode">Modo Escuro</string>
     <string name="background_color">Cor de Fundo</string>
     <string name="manual">Manual do Usuário</string>
-    <string name="manual_content">Bem-vindo ao Danny\'s Alarm!\n\nRECURSOS:\n1. ADICIONAR ALARME: Use o botão (+). Você pode definir o horário digitando diretamente nos números.\n2. REPETIR: Selecione os dias da semana em que deseja que o alarme toque.\n3. EXCEÇÕES: Clique em \"Exceções\" para abrir um calendário e selecionar dias específicos em que o alarme NÃO deve tocar.\n4. MELODIA: Escolha qualquer som do sistema ou arquivo de música local.\n5. CONFIGURAÇÕES: Personalize o aplicativo com qualquer cor de fundo ou force o modo escuro.\n6. IDIOMAS: Altere o idioma do aplicativo instantaneamente a partir do ícone do globo.\n\nDesfrute de uma experiência de despertar profissional!</string>
+    <string name="manual_content">Se você gostou do meu aplicativo, pode me ajudar em futuras criações doando o que considerar apropriado em paypal.me/DanielSalasSagara - Obrigado!\n\nBem-vindo ao Danny\'s Alarm!\n\nRECURSOS:\n1. ADICIONAR ALARME: Use o botão (+). Você pode definir o horário digitando diretamente nos números.\n2. REPETIR: Selecione os dias da semana em que deseja que o alarme toque.\n3. EXCEPCÇÕES: Clique em \"Exceções\" para abrir um calendário e selecionar dias específicos em que o alarme NÃO deve tocar.\n4. MELODIA: Escolha qualquer som do sistema ou arquivo de música local.\n5. CONFIGURAÇÕES: Personalize o aplicativo com qualquer cor de fundo ou force o modo escuro.\n6. IDIOMAS: Altere o idioma do aplicativo instantaneamente a partir do ícone do globo.\n\nDesfrute de uma experiência de despertar profissional!</string>
+    <string name="donation_msg">Se você gostou do meu aplicativo, pode me ajudar em futuras criações doando o que considerar apropriado em paypal.me/DanielSalasSagara - Obrigado!</string>
+    <string name="pre_alarm_notification_title">Próximo Alarme</string>
+    <string name="pre_alarm_notification_text">O alarme tocará às %s</string>
+    <string name="pre_alarm_dismiss_action">Desativar agora</string>
 </resources>

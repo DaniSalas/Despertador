@@ -44,6 +44,28 @@ class AlarmScheduler(private val context: Context) {
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
+        scheduleAlarm(triggerTimeMs, pendingIntent)
+
+        // Programar pre-alarma 10 minutos antes (600,000 ms)
+        val preTriggerTimeMs = triggerTimeMs - 600000
+        if (preTriggerTimeMs > System.currentTimeMillis()) {
+            val preIntent = Intent(context, AlarmReceiver::class.java).apply {
+                putExtras(intent)
+                putExtra("IS_PRE_ALARM", true)
+            }
+            val prePendingIntent = PendingIntent.getBroadcast(
+                context,
+                alarm.id + 10000,
+                preIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            )
+            scheduleAlarm(preTriggerTimeMs, prePendingIntent)
+        }
+
+        Log.d("AlarmScheduler", "Alarma ${alarm.id} programada para milisegundos: $triggerTimeMs")
+    }
+
+    private fun scheduleAlarm(triggerTimeMs: Long, pendingIntent: PendingIntent) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             if (alarmManager.canScheduleExactAlarms()) {
                 alarmManager.setExactAndAllowWhileIdle(
@@ -65,10 +87,10 @@ class AlarmScheduler(private val context: Context) {
                 pendingIntent
             )
         }
-        Log.d("AlarmScheduler", "Alarma ${alarm.id} programada para milisegundos: $triggerTimeMs")
     }
 
     fun cancel(alarmId: Int) {
+        // Cancelar alarma principal
         val intent = Intent(context, AlarmReceiver::class.java)
         val pendingIntent = PendingIntent.getBroadcast(
             context,
@@ -79,8 +101,21 @@ class AlarmScheduler(private val context: Context) {
         if (pendingIntent != null) {
             alarmManager.cancel(pendingIntent)
             pendingIntent.cancel()
-            Log.d("AlarmScheduler", "Alarma $alarmId cancelada")
         }
+
+        // Cancelar pre-alarma
+        val prePendingIntent = PendingIntent.getBroadcast(
+            context,
+            alarmId + 10000,
+            intent,
+            PendingIntent.FLAG_NO_CREATE or PendingIntent.FLAG_IMMUTABLE
+        )
+        if (prePendingIntent != null) {
+            alarmManager.cancel(prePendingIntent)
+            prePendingIntent.cancel()
+        }
+        
+        Log.d("AlarmScheduler", "Alarma $alarmId y su pre-alarma canceladas")
     }
 
     fun calculateNextTriggerTime(

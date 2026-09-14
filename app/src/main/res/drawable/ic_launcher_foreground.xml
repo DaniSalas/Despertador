@@ -4,13 +4,20 @@
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
-    <!-- Iniciales "Da" en blanco y negrita centradas -->
-    <!-- Letra 'D' -->
+    <!-- D en negrita (Grande y centrada arriba) -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M24,30 h16 c12,0 18,6 18,16 c0,10 -6,16 -18,16 H24 V30 Z M34,40 v12 h6 c6,0 8,-3 8,-6 c0,-3 -2,-6 -8,-6 H34 Z" />
-    <!-- Letra 'a' -->
-    <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M64,46 a10,10 0 1,0 0,20 h8 v-20 h-8 Z M72,56 v6 h8 v-22 h-8 v16 Z" />
+        android:pathData="M38,20 h12 c12,0 22,8 22,22 s-10,22 -22,22 h-12 v-44 z M48,30 v24 h2 c8,0 12,-4 12,-12 s-4,-12 -12,-12 h-2 z" />
+
+    <!-- Palabra "ALARM" debajo -->
+    <!-- A -->
+    <path android:fillColor="#FFFFFF" android:pathData="M20,80 l4,-10 h1.5 l4,10 h-2 l-1,-2.5 h-4.5 l-1,2.5 h-2 z M24,75.5 h3.5 l-1.7,-4.5 z" />
+    <!-- L -->
+    <path android:fillColor="#FFFFFF" android:pathData="M33,70 v10 h6 v-2 h-4 v-8 h-2 z" />
+    <!-- A -->
+    <path android:fillColor="#FFFFFF" android:pathData="M43,80 l4,-10 h1.5 l4,10 h-2 l-1,-2.5 h-4.5 l-1,2.5 h-2 z M47,75.5 h3.5 l-1.7,-4.5 z" />
+    <!-- R -->
+    <path android:fillColor="#FFFFFF" android:pathData="M56,70 v10 h2 v-4 h1 l2.5,4 h2.5 l-2.5,-4 c1.5,0 2.5,-1 2.5,-3 s-1,-3 -3,-3 h-5.5 z M58,72 h3 c1,0 1.5,0.5 1.5,1s-0.5,1 -1.5,1 h-3 v-2 z" />
+    <!-- M -->
+    <path android:fillColor="#FFFFFF" android:pathData="M70,80 v-10 h2 l2.5,5 l2.5,-5 h2 v10 h-2 v-6.5 l-2.5,5 l-2.5,-5 v6.5 h-2 z" />
 </vector>

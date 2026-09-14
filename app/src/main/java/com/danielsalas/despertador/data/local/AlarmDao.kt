@@ -19,6 +19,10 @@ interface AlarmDao {
     fun getAllAlarmsWithExceptions(): Flow<List<AlarmWithExceptions>>
 
     @Transaction
+    @Query("SELECT * FROM alarms")
+    fun getAllAlarmsWithExceptionsSync(): List<AlarmWithExceptions>
+
+    @Transaction
     @Query("SELECT * FROM alarms WHERE id = :alarmId")
     suspend fun getAlarmWithExceptionsById(alarmId: Int): AlarmWithExceptions?
 

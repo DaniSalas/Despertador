@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">ダニーのアラーム</string>
+    <string name="add_alarm">アラームを追加</string>
+    <string name="edit_alarm">アラームを編集</string>
+    <string name="delete">削除</string>
+    <string name="save">保存</string>
+    <string name="cancel">キャンセル</string>
+    <string name="label">名前 / ラベル</string>
+    <string name="label_placeholder">起こして</string>
+    <string name="vibrate">鳴動時に振動</string>
+    <string name="melody">メロディ</string>
+    <string name="select_melody">サウンドまたは曲を選択</string>
+    <string name="days_of_week">繰り返す曜日</string>
+    <string name="exceptions_calendar">除外日 (これらの日は鳴らしません)</string>
+    <string name="language_menu">言語</string>
+    <string name="no_alarms">スケジュールされたアラームはありません。今すぐ追加しましょう！</string>
+    <string name="dismiss_alarm">停止</string>
+    <string name="snooze_alarm">スヌーズ (5分)</string>
+    <string name="audio_explorer_title">サウンドエクスプローラー</string>
+    <string name="system_sounds">システムサウンド</string>
+    <string name="local_files">ローカルファイル / 音楽</string>
+    <string name="permission_required">権限が必要です</string>
+
+    <string name="mon">月</string>
+    <string name="tue">火</string>
+    <string name="wed">水</string>
+    <string name="thu">木</string>
+    <string name="fri">金</string>
+    <string name="sat">土</string>
+    <string name="sun">日</string>
+    <string name="settings">設定</string>
+    <string name="dark_mode">ダークモード</string>
+    <string name="background_color">背景色</string>
+    <string name="manual">ユーザーマニュアル</string>
+    <string name="manual_content">アプリを気に入っていただけましたら、paypal.me/DanielSalasSagara で適切な金額を寄付していただければ、今後の制作の励みになります - ありがとうございます！\n\nダニーのアラームへようこそ！\n\n機能：\n1. アラーム追加：(+) ボタンを使用します。数字を直接入力して時間を設定できます。\n2. 繰り返し：アラームを鳴らしたい曜日を選択します。\n3. 除外日：「除外日」をクリックしてカレンダーを開き、アラームを鳴らしたくない特定の動作日を選択します。\n4. メロディ：デバイスからシステムサウンドやローカル音楽ファイルを選択します。\n5. 設定：背景色をカスタマイズしたり、ダークモードを強制したりできます。\n6. 言語：地球儀アイコンからアプリの言語をすぐに変更できます。\n\nプロフェッショナルな目覚めをお楽しみください！</string>
+    <string name="donation_msg">アプリを気に入っていただけましたら、paypal.me/DanielSalasSagara で適切な金額を寄付していただければ、今後の制作の励みになります - ありがとうございます！</string>
+    <string name="pre_alarm_notification_title">次のアラーム</string>
+    <string name="pre_alarm_notification_text">アラームは %s に鳴ります</string>
+    <string name="pre_alarm_dismiss_action">今すぐ停止</string>
+</resources>

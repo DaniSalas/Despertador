@@ -61,7 +61,9 @@ fun MainScreen(
                             "fr" to "Français",
                             "de" to "Deutsch",
                             "it" to "Italiano",
-                            "pt" to "Português"
+                            "pt" to "Português",
+                            "ko" to "한국어",
+                            "ja" to "日本語"
                         )
                         languages.forEach { (code, name) ->
                             DropdownMenuItem(

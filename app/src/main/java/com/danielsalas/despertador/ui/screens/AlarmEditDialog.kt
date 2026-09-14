@@ -38,40 +38,26 @@ fun AlarmEditDialog(
     onDismiss: () -> Unit,
     onSave: (hour: Int, minute: Int, days: List<Int>, melodyPath: String, melodyName: String, label: String, vibrate: Boolean, exceptions: List<String>) -> Unit,
     onSelectMelodyClick: () -> Unit,
-    currentSelectedMelodyName: String?,
-    currentSelectedMelodyPath: String?,
+    // Hoisted states
+    hourStr: String,
+    onHourChange: (String) -> Unit,
+    minuteStr: String,
+    onMinuteChange: (String) -> Unit,
+    label: String,
+    onLabelChange: (String) -> Unit,
+    vibrate: Boolean,
+    onVibrateChange: (Boolean) -> Unit,
+    selectedDays: List<Int>,
+    onSelectedDaysChange: (List<Int>) -> Unit,
+    melodyName: String,
+    onMelodyNameChange: (String) -> Unit,
+    melodyPath: String,
+    onMelodyPathChange: (String) -> Unit,
+    localExceptions: List<String>,
+    onLocalExceptionsChange: (List<String>) -> Unit,
     onAddException: (String) -> Unit,
     onRemoveException: (String) -> Unit
 ) {
-    var hourStr by remember { mutableStateOf(String.format(Locale.getDefault(), "%02d", alarmWithExceptions?.alarm?.hour ?: 8)) }
-    var minuteStr by remember { mutableStateOf(String.format(Locale.getDefault(), "%02d", alarmWithExceptions?.alarm?.minute ?: 0)) }
-    var label by remember { mutableStateOf(alarmWithExceptions?.alarm?.label ?: "") }
-    var vibrate by remember { mutableStateOf(alarmWithExceptions?.alarm?.isVibrate ?: true) }
-    
-    var selectedDays by remember {
-        mutableStateOf(alarmWithExceptions?.alarm?.getDaysList() ?: emptyList())
-    }
-
-    var melodyName by remember { mutableStateOf(alarmWithExceptions?.alarm?.melodyName ?: "Predeterminado") }
-    var melodyPath by remember { mutableStateOf(alarmWithExceptions?.alarm?.melodyPath ?: "") }
-
-    var localExceptions by remember {
-        val today = LocalDate.now()
-        mutableStateOf(
-            alarmWithExceptions?.exceptions
-                ?.map { it.exceptionDate }
-                ?.filter { LocalDate.parse(it) >= today }
-                ?: emptyList<String>()
-        )
-    }
-
-    LaunchedEffect(currentSelectedMelodyName, currentSelectedMelodyPath) {
-        if (currentSelectedMelodyName != null && currentSelectedMelodyPath != null) {
-            melodyName = currentSelectedMelodyName
-            melodyPath = currentSelectedMelodyPath
-        }
-    }
-
     var showDatePicker by remember { mutableStateOf(false) }
 
     Dialog(
@@ -106,7 +92,7 @@ fun AlarmEditDialog(
                 ) {
                     TimeInput(
                         value = hourStr,
-                        onValueChange = { hourStr = it },
+                        onValueChange = onHourChange,
                         label = "HH"
                     )
                     Text(
@@ -116,14 +102,14 @@ fun AlarmEditDialog(
                     )
                     TimeInput(
                         value = minuteStr,
-                        onValueChange = { minuteStr = it },
+                        onValueChange = onMinuteChange,
                         label = "MM"
                     )
                 }
 
                 OutlinedTextField(
                     value = label,
-                    onValueChange = { label = it },
+                    onValueChange = onLabelChange,
                     label = { Text(stringResource(R.string.label)) },
                     placeholder = { Text(stringResource(R.string.label_placeholder)) },
                     modifier = Modifier.fillMaxWidth(),
@@ -149,11 +135,12 @@ fun AlarmEditDialog(
                             val isSelected = selectedDays.contains(valDay)
                             Surface(
                                 onClick = {
-                                    selectedDays = if (isSelected) {
+                                    val newDays = if (isSelected) {
                                         selectedDays.filter { it != valDay }
                                     } else {
                                         selectedDays + valDay
                                     }
+                                    onSelectedDaysChange(newDays)
                                 },
                                 shape = CircleShape,
                                 color = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surfaceVariant,
@@ -196,7 +183,7 @@ fun AlarmEditDialog(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
-                        Checkbox(checked = vibrate, onCheckedChange = { vibrate = it })
+                        Checkbox(checked = vibrate, onCheckedChange = onVibrateChange)
                         Text(stringResource(R.string.vibrate), style = MaterialTheme.typography.bodyMedium)
                     }
                     
@@ -224,10 +211,8 @@ fun AlarmEditDialog(
                                         Icons.Default.Delete,
                                         contentDescription = "Remove",
                                         modifier = Modifier.size(16.dp).clickable {
-                                            localExceptions = localExceptions.filter { it != dateStr }
-                                            if (alarmWithExceptions != null) {
-                                                onRemoveException(dateStr)
-                                            }
+                                            onLocalExceptionsChange(localExceptions.filter { it != dateStr })
+                                            onRemoveException(dateStr)
                                         }
                                     )
                                 }
@@ -267,10 +252,8 @@ fun AlarmEditDialog(
                     datePickerState.selectedDateMillis?.let { millis ->
                         val date = Instant.ofEpochMilli(millis).atZone(ZoneId.systemDefault()).toLocalDate().toString()
                         if (!localExceptions.contains(date)) {
-                            localExceptions = localExceptions + date
-                            if (alarmWithExceptions != null) {
-                                onAddException(date)
-                            }
+                            onLocalExceptionsChange(localExceptions + date)
+                            onAddException(date)
                         }
                     }
                     showDatePicker = false

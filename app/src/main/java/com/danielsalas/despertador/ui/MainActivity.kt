@@ -11,8 +11,11 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.Saver
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.danielsalas.despertador.R
@@ -22,6 +25,8 @@ import com.danielsalas.despertador.ui.screens.MainScreen
 import com.danielsalas.despertador.ui.screens.MelodyPickerScreen
 import com.danielsalas.despertador.ui.screens.SettingsScreen
 import com.danielsalas.despertador.ui.viewmodel.AlarmViewModel
+import java.time.LocalDate
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
@@ -44,8 +49,14 @@ class MainActivity : AppCompatActivity() {
 
         setContent {
             // Configuración de Tema Personalizado y Modo Oscuro
-            var isDarkMode by remember { mutableStateOf(false) }
-            var customBackgroundColor by remember { mutableStateOf(Color(0xFFF4F4F9)) }
+            var isDarkMode by rememberSaveable { mutableStateOf(false) }
+            val colorSaver = Saver<Color, Int>(
+                save = { it.toArgb() },
+                restore = { Color(it) }
+            )
+            var customBackgroundColor by rememberSaveable(stateSaver = colorSaver) { 
+                mutableStateOf(Color(0xFFF4F4F9)) 
+            }
 
             val systemInDark = isSystemInDarkTheme()
             val useDarkTheme = isDarkMode || systemInDark
@@ -61,13 +72,22 @@ class MainActivity : AppCompatActivity() {
                     val viewModel: AlarmViewModel = viewModel()
                     val alarmsList by viewModel.allAlarms.collectAsState()
 
-                    var currentScreen by remember { mutableStateOf("main") }
-                    var showEditDialog by remember { mutableStateOf(false) }
-                    var showManualDialog by remember { mutableStateOf(false) }
-                    var selectedAlarmForEdit by remember { mutableStateOf<AlarmWithExceptions?>(null) }
-
-                    var tempMelodyName by remember { mutableStateOf<String?>(null) }
-                    var tempMelodyPath by remember { mutableStateOf<String?>(null) }
+                    var currentScreen by rememberSaveable { mutableStateOf("main") }
+                    var showEditDialog by rememberSaveable { mutableStateOf(false) }
+                    var showManualDialog by rememberSaveable { mutableStateOf(false) }
+                    
+                    // Draft Alarm state
+                    var draftHour by rememberSaveable { mutableStateOf("08") }
+                    var draftMinute by rememberSaveable { mutableStateOf("00") }
+                    var draftLabel by rememberSaveable { mutableStateOf("") }
+                    var draftVibrate by rememberSaveable { mutableStateOf(true) }
+                    var draftSelectedDays by rememberSaveable { mutableStateOf(listOf<Int>()) }
+                    var draftMelodyName by rememberSaveable { mutableStateOf("Predeterminado") }
+                    var draftMelodyPath by rememberSaveable { mutableStateOf("") }
+                    var draftExceptions by rememberSaveable { mutableStateOf(listOf<String>()) }
+                    
+                    var selectedAlarmId by rememberSaveable { mutableIntStateOf(0) }
+                    var isEditingExisting by rememberSaveable { mutableStateOf(false) }
 
                     if (currentScreen == "main") {
                         MainScreen(
@@ -75,13 +95,32 @@ class MainActivity : AppCompatActivity() {
                             onToggleAlarm = { alarm, enabled -> viewModel.toggleAlarm(alarm, enabled) },
                             onDeleteAlarm = { alarm -> viewModel.deleteAlarm(alarm.alarm) },
                             onAlarmClick = { alarm ->
-                                selectedAlarmForEdit = alarm
+                                isEditingExisting = true
+                                selectedAlarmId = alarm.alarm.id
+                                draftHour = String.format(Locale.getDefault(), "%02d", alarm.alarm.hour)
+                                draftMinute = String.format(Locale.getDefault(), "%02d", alarm.alarm.minute)
+                                draftLabel = alarm.alarm.label
+                                draftVibrate = alarm.alarm.isVibrate
+                                draftSelectedDays = alarm.alarm.getDaysList()
+                                draftMelodyName = alarm.alarm.melodyName
+                                draftMelodyPath = alarm.alarm.melodyPath
+                                val today = LocalDate.now()
+                                draftExceptions = alarm.exceptions
+                                    .map { it.exceptionDate }
+                                    .filter { LocalDate.parse(it) >= today }
                                 showEditDialog = true
                             },
                             onAddAlarmClick = {
-                                selectedAlarmForEdit = null
-                                tempMelodyName = null
-                                tempMelodyPath = null
+                                isEditingExisting = false
+                                selectedAlarmId = 0
+                                draftHour = "08"
+                                draftMinute = "00"
+                                draftLabel = ""
+                                draftVibrate = true
+                                draftSelectedDays = emptyList()
+                                draftMelodyName = "Predeterminado"
+                                draftMelodyPath = ""
+                                draftExceptions = emptyList()
                                 showEditDialog = true
                             },
                             onSettingsClick = {
@@ -115,40 +154,62 @@ class MainActivity : AppCompatActivity() {
 
                         if (showEditDialog) {
                             AlarmEditDialog(
-                                alarmWithExceptions = selectedAlarmForEdit,
+                                alarmWithExceptions = if (isEditingExisting) {
+                                    alarmsList.find { it.alarm.id == selectedAlarmId }
+                                } else null,
                                 onDismiss = { showEditDialog = false },
-                            onSave = { hour, minute, days, path, name, label, vibrate, exceptions ->
-                                viewModel.addOrUpdateAlarm(
-                                    id = selectedAlarmForEdit?.alarm?.id ?: 0,
-                                    hour = hour,
-                                    minute = minute,
-                                    days = days,
-                                    melodyPath = path,
-                                    melodyName = name,
-                                    label = label,
-                                    vibrate = vibrate,
-                                    initialExceptions = exceptions
-                                )
-                                showEditDialog = false
-                            },
+                                onSave = { hour, minute, days, path, name, label, vibrate, exceptions ->
+                                    viewModel.addOrUpdateAlarm(
+                                        id = if (isEditingExisting) selectedAlarmId else 0,
+                                        hour = hour,
+                                        minute = minute,
+                                        days = days,
+                                        melodyPath = path,
+                                        melodyName = name,
+                                        label = label,
+                                        vibrate = vibrate,
+                                        initialExceptions = exceptions
+                                    )
+                                    showEditDialog = false
+                                },
                                 onSelectMelodyClick = {
                                     currentScreen = "melody_picker"
                                 },
-                                currentSelectedMelodyName = tempMelodyName,
-                                currentSelectedMelodyPath = tempMelodyPath,
+                                hourStr = draftHour,
+                                onHourChange = { draftHour = it },
+                                minuteStr = draftMinute,
+                                onMinuteChange = { draftMinute = it },
+                                label = draftLabel,
+                                onLabelChange = { draftLabel = it },
+                                vibrate = draftVibrate,
+                                onVibrateChange = { draftVibrate = it },
+                                selectedDays = draftSelectedDays,
+                                onSelectedDaysChange = { draftSelectedDays = it },
+                                melodyName = draftMelodyName,
+                                onMelodyNameChange = { draftMelodyName = it },
+                                melodyPath = draftMelodyPath,
+                                onMelodyPathChange = { draftMelodyPath = it },
+                                localExceptions = draftExceptions,
+                                onLocalExceptionsChange = { newExceptions ->
+                                    draftExceptions = newExceptions
+                                },
                                 onAddException = { date ->
-                                    selectedAlarmForEdit?.let { viewModel.addException(it.alarm.id, date) }
+                                    if (isEditingExisting) {
+                                        viewModel.addException(selectedAlarmId, date)
+                                    }
                                 },
                                 onRemoveException = { date ->
-                                    selectedAlarmForEdit?.let { viewModel.removeException(it.alarm.id, date) }
+                                    if (isEditingExisting) {
+                                        viewModel.removeException(selectedAlarmId, date)
+                                    }
                                 }
                             )
                         }
                     } else if (currentScreen == "melody_picker") {
                         MelodyPickerScreen(
                             onMelodySelected = { name, path ->
-                                tempMelodyName = name
-                                tempMelodyPath = path
+                                draftMelodyName = name
+                                draftMelodyPath = path
                                 currentScreen = "main"
                                 showEditDialog = true
                             },
